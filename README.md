@@ -1,6 +1,6 @@
 # Ship Sender Node.js Library
 
-The Ship Sender Node library provides convenient access to the Ship Sender API for applications written in server-side JavaScript. Detailed documentation can be found [here](https://get-ship.github.io/ship-node/).
+The Ship Sender Node library provides convenient access to the Ship Sender API for applications written in server-side JavaScript. Detailed documentation can be found [here](https://packagex-io.github.io/ship-node/).
 
 ## Installation
 
