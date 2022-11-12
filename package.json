@@ -1,0 +1,56 @@
+{
+  "name": "ship-node",
+  "version": "0.0.1",
+  "description": "The node wrapper for the PackageX Cloud Shipment APIs.",
+  "main": "lib/ship.js",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json --readme ./README.md",
+    "shipments.list": "node ./bin/index shipments.list",
+    "shipments.create": "node ./bin/index shipments.create",
+    "shipments.buy": "node ./bin/index shipments.buy",
+    "shipments.retrieve": "node ./bin/index shipments.retrieve",
+    "shipments.refund": "node ./bin/index shipments.refund",
+    "shipments.update": "node ./bin/index shipments.update",
+    "profile.retrieve": "node ./bin/index profile.retrieve",
+    "test": "node ./bin/index test",
+    "publish": "node ./bin/index test && npm publish",
+    "deploy": "node ./bin/index test && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/packagex-io/ship-node.git"
+  },
+  "keywords": [
+    "ship, courier, carrier, usps, shipment"
+  ],
+  "author": "Ship",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/packagex-io/ship-node/issues"
+  },
+  "homepage": "https://github.com/ship-node#readme",
+  "contributors": [
+    {
+      "name": "Valentin Panyushenko",
+      "email": "me@panyushenko.com",
+      "url": "https://github.com/vpanyushenko"
+    },
+    {
+      "name": "Ali Khan",
+      "email": "ali.khan@packagex.io",
+      "url": "https://github.com/aikhan79"
+    }
+  ],
+  "devDependencies": {
+    "better-docs": "^2.7.2",
+    "colors": "^1.4.0",
+    "commander": "^9.4.1",
+    "dotenv": "^16.0.3",
+    "jsdoc": "^4.0.0",
+    "jsdoc-http-plugin": "^0.3.2",
+    "log-symbols": "^2.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
