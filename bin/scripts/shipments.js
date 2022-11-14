@@ -79,6 +79,7 @@ const buy = (shipmentId, rateId) => {
       .buy(shipmentId, rateId)
       .then((res) => {
         console.log(`${res.message}`.green.bold);
+        console.log(res);
         console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
@@ -101,6 +102,7 @@ const retrieve = (shipmentId) => {
       .retrieve(shipmentId)
       .then((res) => {
         console.log(`${res.message}`.green.bold);
+        console.log(res);
         console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
