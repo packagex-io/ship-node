@@ -84,11 +84,11 @@ program
       //   return shipments.update(res.data.id);
       // })
       .then((res) => {
-        return shipments.buy(res.data.id, res.data.rates[0].id);
-      })
-      .then((res) => {
         console.log(res.data.id);
         return shipments.retrieve(res.data.id);
+      })
+      .then((res) => {
+        return shipments.buy(res.data.id, res.data.rates[0].id);
       })
       .then((res) => {
         console.log(res.data.id);
