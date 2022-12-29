@@ -6,14 +6,13 @@ const ship = new Ship(process.env.SHIP_API_KEY, process.env.SHIP_ENV);
 
 const list = (options) => {
   return new Promise((resolve, reject) => {
-    
+
     const start_time = process.hrtime();
     console.log("List Shipments...");
     ship.shipments
       .list(options)
       .then((res) => {
         console.log(`${res.data.length} listed`.green.bold);
-        // console.log(JSON.stringify(res.data[0], null, 4));
         console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
@@ -31,47 +30,101 @@ const create = () => {
   return new Promise((resolve, reject) => {
     const start_time = process.hrtime();
     console.log("Creating Shipment...");
-    
     const sender = {
       name: "Ali Khan",
       email: "ali.khan@packagex.io",
       phone: "+12394886485",
-      address: "500 7th Avenue, New York, NY, USA",
+      address: "2131 Industrial Parkway, Silver Spring, MD, USA",
     };
 
     const recipient = {
       name: "Jamie Jones",
       email: "jamie.jones@packagex.xyz",
       phone: "+12678846151",
-      address: "600 7th Avenue, New York, NY, USA",
+      address: "500 7th Avenue, New York, NY, USA",
     };
 
-    const parcel = {
-      length: 10, // inches
-      width: 0, // inches
-      height: 7, // inches
-      weight: 1, // pounds
-    };
-
-    ship.shipments
-      .create(sender, recipient, [parcel])
-      .then((res) => {
-        const shipment = res.data;
-        const sorted_rate = shipment.rates.sort((a, b) => a.billed_amount - b.billed_amount);
-        const selected_rate = sorted_rate[0].id; //Get the cheapest rate
-        // console.log(JSON.stringify(res.data, null, 4));
-        console.log(`${res.data.id}, ${selected_rate}`);
-        console.log(`${res.message}`.green.bold);
-        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
-        console.log("");
-        console.log("");
-        resolve(res);
-      })
-      .catch((err) => {
-        console.error(`${err.message}`.bgRed);
-        reject(err);
-        process.exit(1);
-      });
+    const parcel = [
+      {
+        length: 18, // inches
+        width: 13, // inches
+        height: 3, // inches
+        weight: 10, // pounds
+      },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 20, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 30, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 40, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 50, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 60, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 70, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 80, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 90, // pounds
+      // },
+      // {
+      //   length: 18, // inches
+      //   width: 13, // inches
+      //   height: 3, // inches
+      //   weight: 100, // pounds
+      // },
+    ];
+    console.log(`Provider,Service,Rate,Weight`);
+    parcel.forEach((p) => {
+      ship.shipments
+        .create(sender, recipient, p)
+        .then((res) => {
+          const shipment = res.data;
+          const sorted_rate = shipment.rates.sort((a, b) => a.billed_amount - b.billed_amount);
+          const selected_rate = sorted_rate[0].id; //Get the cheapest rate
+          shipment.rates.forEach((rate) => {
+            console.log(`${rate.provider.name},${rate.service_level.name},$${rate.amount / 100},${p.weight}`);
+          });
+          resolve(res);
+        })
+        .catch((err) => {
+          console.error(`${err.message}`.bgRed);
+          reject(err);
+          process.exit(1);
+        });
+    });
   });
 };
 

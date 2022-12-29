@@ -1,6 +1,6 @@
 {
   "name": "ship-node",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "The node wrapper for the PackageX Cloud Shipment APIs.",
   "main": "lib/ship.js",
   "scripts": {
