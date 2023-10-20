@@ -44,13 +44,13 @@
   "devDependencies": {
     "better-docs": "^2.7.2",
     "colors": "^1.4.0",
-    "commander": "^9.4.1",
-    "dotenv": "^16.0.3",
-    "jsdoc": "^4.0.0",
+    "commander": "^11.1.0",
+    "dotenv": "^16.3.1",
+    "jsdoc": "^4.0.2",
     "jsdoc-http-plugin": "^0.3.2",
-    "log-symbols": "^2.2.0"
+    "log-symbols": "^5.1.0"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^1.5.1"
   }
 }

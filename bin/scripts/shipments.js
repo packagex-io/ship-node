@@ -14,8 +14,6 @@ const list = (options) => {
       .then((res) => {
         console.log(`${res.data.length} listed`.green.bold);
         console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
-        console.log("");
-        console.log("");
         resolve(res);
       })
       .catch((err) => {
