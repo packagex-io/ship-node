@@ -2,7 +2,6 @@ const duration = require("../../lib/util/calc-time");
 const Ship = require("../../lib/ship");
 require("dotenv").config();
 
-console.log(process.env.SHIP_ENV);
 const ship = new Ship(process.env.SHIP_API_KEY, process.env.SHIP_ENV);
 
 const retrieve = () => {

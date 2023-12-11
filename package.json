@@ -1,6 +1,6 @@
 {
   "name": "ship-node",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "The node wrapper for the PackageX Cloud Shipment APIs.",
   "main": "lib/ship.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "shipments.update": "node ./bin/index shipments.update",
     "profile.retrieve": "node ./bin/index profile.retrieve",
     "test": "node ./bin/index test",
-    "publish": "node ./bin/index test && npm publish",
+    "package-publish": "node ./bin/index test && npm publish",
     "deploy": "node ./bin/index test && npm publish"
   },
   "repository": {
