@@ -1,5 +1,4 @@
 const duration = require("../../lib/util/calc-time");
-const logSymbols = require("log-symbols");
 const Ship = require("../../lib/ship");
 require("dotenv").config();
 const ship = new Ship(process.env.SHIP_API_KEY, process.env.SHIP_ENV);
@@ -13,7 +12,7 @@ const list = (options) => {
       .list(options)
       .then((res) => {
         console.log(`${res.data.length} listed`.green.bold);
-        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
+        console.log(`Task ran in ${duration(start_time)}`);
         resolve(res);
       })
       .catch((err) => {
@@ -111,7 +110,7 @@ const create = () => {
         .then((res) => {
           const shipment = res.data;
           const sorted_rate = shipment.rates.sort((a, b) => a.billed_amount - b.billed_amount);
-          const selected_rate = sorted_rate[0].id; //Get the cheapest rate
+          const selected_rate = sorted_rate[3].id; //Get the cheapest rate
           shipment.rates.forEach((rate) => {
             console.log(`${rate.provider.name},${rate.service_level.name},$${rate.amount / 100},${p.weight}`);
           });
@@ -131,15 +130,15 @@ const buy = (shipmentId, rateId) => {
     const start_time = process.hrtime();
     console.log("Purchasing shipment...");
     console.log(shipmentId);
+    console.log(rateId);
     ship.shipments
       .buy(shipmentId, rateId)
       .then((res) => {
         console.log(`${res.message}`.green.bold);
-        // console.log(JSON.stringify(res.data, null, 4));
         const shipment = res.data;
         const label_url = shipment.label_url;
         console.log(label_url);
-        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
+        console.log(`Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
         resolve(res);
@@ -162,7 +161,7 @@ const retrieve = (shipmentId) => {
       .then((res) => {
         console.log(`${res.message}`.green.bold);
         // console.log(JSON.stringify(res.data, null, 4));
-        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
+        console.log(`Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
         resolve(res);
@@ -184,7 +183,7 @@ const refund = (shipmentId) => {
       .refund(shipmentId)
       .then((res) => {
         console.log(`${res.message}`.green.bold);
-        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
+        console.log(`Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
         resolve(res);
@@ -212,7 +211,7 @@ const update = (shipmentId) => {
       .update(shipmentId, update)
       .then((res) => {
         console.log(`${res.message}`.green.bold);
-        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
+        console.log(`Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
         resolve(res);

@@ -1,7 +1,8 @@
 const duration = require("../../lib/util/calc-time");
-const logSymbols = require("log-symbols");
 const Ship = require("../../lib/ship");
 require("dotenv").config();
+
+console.log(process.env.SHIP_ENV);
 const ship = new Ship(process.env.SHIP_API_KEY, process.env.SHIP_ENV);
 
 const retrieve = () => {
@@ -14,7 +15,7 @@ const retrieve = () => {
       .then((res) => {
         console.log(`${res.message}`.green.bold);
         // console.log(JSON.stringify(res.data, null, 4));
-        console.log(`${logSymbols.info}  Task ran in ${duration(start_time)}`);
+        console.log(`Task ran in ${duration(start_time)}`);
         console.log("");
         console.log("");
         resolve(res);

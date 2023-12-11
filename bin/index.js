@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 const v8 = require("v8");
 const program = require("commander");
-const logSymbols = require("log-symbols");
 const colors = require("colors");
-console.log("");
 // console.log(`Script started with ~${(v8.getHeapStatistics().total_available_size / 1024 / 1024 / 1024).toFixed(2)} GB of memory`.green.bold);
 
 const shipments = require("./scripts/shipments");
